@@ -3,7 +3,9 @@
 
 | Challenges  | link  
 | :---        |    :----:
-|Class 01 | [array-reverse](.//screenshots/Screenshot%202023-04-03%20%20004225.jpeg) 
+|Class 01     | [array-reverse](./challenges/array-reverse.md) 
+|Class 02     | [array-insert-shift](./challenges/array-insert-shift.md) 
+
 
 
 
