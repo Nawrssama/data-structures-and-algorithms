@@ -22,19 +22,16 @@ The space complexity of this solution is also O(n), since it creates a new array
 
 # Solution
 
- ## Create a function that takes an array
-
     def reverseArray(arr):
- ## Create a new empty list of the same length as the input array
-         reversedArr = [None] * len(arr)
 
- ## Loop through the original array in reverse order
-          for i in range(len(arr)):
-              # Set each element of the new array to the corresponding element from the original array
-               reversedArr[len(arr) - i - 1] = arr[i]
+        reversedArr = [None] * len(arr)
 
- ## Return the reversed array
-         return reversedArr
+
+        for i in range(len(arr)):
+            
+                reversedArr[len(arr) - i - 1] = arr[i]
+
+        return reversedArr
 
 ## example 
 #
