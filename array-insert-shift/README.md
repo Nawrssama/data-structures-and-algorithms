@@ -20,7 +20,7 @@ This function has a time complexity of O(n), where n is the length of the input 
 
 # Solution
 
- def add_value_to_middle(arr, value):
+ def insertShiftArray(arr, value):
 
 .   n = len(arr)
 
@@ -47,7 +47,7 @@ arr = [1, 2, 3, 4, 5]
 
 value = 6
 
-new_arr = add_value_to_middle(arr, value)
+new_arr = insertShiftArray(arr, value)
 
 print(new_arr) 
 
