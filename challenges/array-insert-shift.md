@@ -40,7 +40,7 @@ This function has a time complexity of O(n), where n is the length of the input 
 
 .   return new_arr
 
-## example 
+## example :
 
 
 arr = [1, 2, 3, 4, 5]
