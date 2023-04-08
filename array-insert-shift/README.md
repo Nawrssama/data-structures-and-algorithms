@@ -4,7 +4,7 @@ we need a function which takes in an array and a value to be added. Without util
 # Whiteboard Process
 
 
-![array-insert-shift](./../screenshots/CC2.png)
+![array-insert-shift](./../screenshots/CC2whiteboard.png)
 
 
 
@@ -20,7 +20,7 @@ This function has a time complexity of O(n), where n is the length of the input 
 
 # Solution
 
- def add_value_to_middle(arr, value):
+ def insertShiftArray(arr, value):
 
 .   n = len(arr)
 
@@ -32,9 +32,9 @@ This function has a time complexity of O(n), where n is the length of the input 
 
 .     new_arr[i] = arr[i]
 
-.   new_arr[middle] = value
+.   new_arr[middle+1] = value
 
-.   for i in range(middle, n):
+.   for i in range(middle+1, n):
 
 .     new_arr[i+1] = arr[i]
 
@@ -47,7 +47,7 @@ arr = [1, 2, 3, 4, 5]
 
 value = 6
 
-new_arr = add_value_to_middle(arr, value)
+new_arr = insertShiftArray(arr, value)
 
 print(new_arr) 
 
