@@ -12,7 +12,7 @@ we need a function which takes in an array and a value to be added. Without util
 
 
 ## Approach:
-The add_value_to_middle function creates a new array of length n+1, where n is the length of the input array. It then loops through the first half of the input array to copy the elements to the new array, inserts the new value in the middle of the new array, and loops through the second half of the input array to copy the remaining elements to the new array.
+The function takes an input array arr and an input value value, and inserts the value at the middle index of the array. To do this, it creates a new array new_arr of length n+1 where n is the length of arr. It then copies the first half of the elements of arr to new_arr, inserts the input value at the middle index, and copies the second half of the elements of arr to new_arr. Finally, it returns the new array new_arr.
 
 ## Efficiency:
 This function has a time complexity of O(n), where n is the length of the input array, because it loops through the input array twice. The space complexity is also O(n), because it creates a new array of length n+1.
