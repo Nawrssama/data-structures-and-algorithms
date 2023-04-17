@@ -191,5 +191,3 @@ linked-list-insertions
               -->
 
 
-# Pull Request link :  
-
