@@ -29,6 +29,10 @@
 > - Time --> O(n) 
 > - space -->O(1) 
 
+## big(o) for kth_from_end
+> - Time --> O(n) 
+> - space -->O(1) 
+
 
 # Whiteboard Process links
 ## insert
@@ -39,6 +43,8 @@
 ![add befor ](./screenshots/insert-before.png)
 ## insert-after
 ![adding after ](./screenshots/insert-after.png)
+## kth_from_end
+![kth_from_end ](./screenshots/kth.png)
 
 
 
@@ -188,4 +194,67 @@
         return output  
                           
               -->
+    def kth_from_end(self, k):
+        """
+    Returns the value of the kth node from the end of the linked list.
+
+    Args:
+    - self: the linked list object
+    - k (int): the position of the node, counting from the end of the list
+
+    Returns:
+    - The value of the kth node from the end of the list, or None if k is less than or equal to 0, or if k is greater than the length of the list.
+
+        """
+        
+        if k <= 0:
+            return None
+
+        # Get the length of the linked list
+        length = 0
+        current = self.head
+        while current:
+            length += 1
+            current = current.next
+
+        if k > length:
+            return None
+
+        # Calculate the position of the kth node from the beginning
+        position = length - k
+
+        # Traverse the linked list to find the kth node from the beginning
+        current = self.head
+        for i in range(position):
+            current = current.next
+
+        return current.value
+
+    def find_middle(self):
+        """
+    Returns the value of the middle node of the linked list.
+
+    Args:
+    - self: the linked list object
+
+    Returns:
+    - The value of the middle node of the list, or None if the list is empty.
+
+        """
+        if not self.head:
+            return None
+
+        slow = self.head
+        fast = self.head
+
+        # Traverse the linked list using two pointers,
+        # one moving at half the speed of the other.
+        # When the fast pointer reaches the end of the
+        # list, the slow pointer will be at the middle node.
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        return slow.value
+
 
