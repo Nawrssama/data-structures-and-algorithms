@@ -32,7 +32,9 @@
 ## big(o) for kth_from_end
 > - Time --> O(n) 
 > - space -->O(1) 
-
+## big(o) for zipLists
+> - Time ==> O(n) because the function iterates over each node in both linked lists exactly once.
+> - space ==> O(1)because the function only creates a constant number of variables that store pointers to nodes in the input linked lists. 
 
 linked-list-insertions
 # Whiteboard Process links
@@ -46,6 +48,8 @@ linked-list-insertions
 ![adding after ](./screenshots/insert-after.png)
 ## kth_from_end
 ![kth_from_end ](./screenshots/kth.png)
+## zipLists
+![zipLists ](./screenshots/zipLists.png)
 
 
 
@@ -257,6 +261,29 @@ linked-list-insertions
             fast = fast.next.next
 
         return slow.value
+
+    def zipLists(list1: 'LinkedList', list2: 'LinkedList'):
+        """
+        Zip two linked lists together so that the nodes alternate between the two lists and return a reference to the zipped list.
+
+        """
+
+        if list1.head is None:
+            return list2
+        if list2.head is None:
+            return list1
+        list1_current = list1.head
+        list2_current = list2.head
+        while list1_current and list2_current:
+            list1_next = list1_current.next
+            list2_next = list2_current.next
+            list1_current.next = list2_current
+            if list1_next is None:
+                break
+            list2_current.next = list1_next
+            list1_current = list1_next
+            list2_current = list2_next
+        return list1
 
 
 

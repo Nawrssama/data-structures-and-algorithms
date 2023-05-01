@@ -102,6 +102,20 @@ class LinkedList:
         else:
             print("this target value does not exists")
 
+    def to_string(self):
+        """
+        Convert the linked list to a string
+        Returns:
+            str: The string representation of the linked list
+        """
+        output = ""
+        curr = self.head
+        while (curr is not None):
+            output += f"{{ {curr.value} }} -> "
+            curr = curr.next
+        output += "NONE"
+        return output
+
     def insert_before(self, target, value):
         """
        Insert a node with the given value before the first node with the given target value.
@@ -147,6 +161,8 @@ class LinkedList:
 
             output += " None"
         return output
+    
+    
 
     def kth_from_end(self, k):
         """
@@ -210,3 +226,27 @@ class LinkedList:
             fast = fast.next.next
 
         return slow.value
+    
+    @staticmethod
+    def zipLists(list1: 'LinkedList', list2: 'LinkedList'):
+        """
+        Zip two linked lists together so that the nodes alternate between the two lists and return a reference to the zipped list.
+
+        """
+
+        if list1.head is None:
+            return list2
+        if list2.head is None:
+            return list1
+        list1_current = list1.head
+        list2_current = list2.head
+        while list1_current and list2_current:
+            list1_next = list1_current.next
+            list2_next = list2_current.next
+            list1_current.next = list2_current
+            if list1_next is None:
+                break
+            list2_current.next = list1_next
+            list1_current = list1_next
+            list2_current = list2_next
+        return list1
