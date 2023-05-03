@@ -250,3 +250,4 @@ class LinkedList:
             list1_current = list1_next
             list2_current = list2_next
         return list1
+
