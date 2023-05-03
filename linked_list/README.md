@@ -35,6 +35,9 @@
 ## big(o) for zipLists
 > - Time ==> O(n) because the function iterates over each node in both linked lists exactly once.
 > - space ==> O(1)because the function only creates a constant number of variables that store pointers to nodes in the input linked lists. 
+## big(o) for reverse_list
+> - Time ==> Time ==> O(n) because the function traverses the entire list once.
+> - space ==> space ==> O(1)because the function only uses a fixed number of pointers to reverse the list and does not create any additional data structures proportional to the size of the input.
 
 # Whiteboard Process links
 ## insert
@@ -49,6 +52,8 @@
 ![kth_from_end ](./screenshots/kth.png)
 ## zipLists
 ![zipLists ](./screenshots/zipLists.png)
+## reverse_list
+![reverse_list ](./screenshots/reverse_list.png)
 
 
 
@@ -283,5 +288,21 @@
             list1_current = list1_next
             list2_current = list2_next
         return list1
+
+def reverse_list(head):
+    """
+    Reverse a singly linked list and return its new head node.
+
+    """
+    if not head:
+        return None
+    prev = None
+    current = head
+    while current:
+        next_node = current.next
+        current.next = prev
+        prev = current
+        current = next_node
+    return prev
 
 
