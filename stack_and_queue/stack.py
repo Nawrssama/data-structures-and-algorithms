@@ -12,7 +12,7 @@ class Stack:
             stack_str = "Top -->"
             node = self.top
             while node:
-              stack_str += f" {node.value} "
+              stack_str += f" {node.value} -->"
               node = node.next
             return stack_str    
         else:
@@ -58,6 +58,9 @@ class Stack:
             return self.top.value
         else:
             raise Exception("Error : empty stack")
+        
+    def get_size(self):
+        return self.size
 
   
     def is_empty_stack(self):

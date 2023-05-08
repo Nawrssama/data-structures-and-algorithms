@@ -46,7 +46,7 @@ def test_stack2():
     stack.push_stack("B")
     stack.push_stack("K")
     stack.push_stack("A")
-    expected = "Top --> A  K  B "
+    expected = "Top --> A --> K --> B -->"
     actual = str(stack)
     assert expected == actual
 def test_stack3():
