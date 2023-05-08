@@ -176,7 +176,6 @@ class LinkedList:
     - The value of the kth node from the end of the list, or None if k is less than or equal to 0, or if k is greater than the length of the list.
 
         """
-        
         if k <= 0:
             return None
 
