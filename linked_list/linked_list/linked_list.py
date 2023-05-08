@@ -177,8 +177,8 @@ class LinkedList:
 
         """
         
-        if k <= 0:
-            return None
+        if k < 0:
+            raise Exception("K must be Positive!")
 
         # Get the length of the linked list
         length = 0
@@ -187,11 +187,11 @@ class LinkedList:
             length += 1
             current = current.next
 
-        if k > length:
-            return None
+        if k >= length:
+            raise Exception("out of range!")
 
         # Calculate the position of the kth node from the beginning
-        position = length - k
+        position = length - k -1
 
         # Traverse the linked list to find the kth node from the beginning
         current = self.head
