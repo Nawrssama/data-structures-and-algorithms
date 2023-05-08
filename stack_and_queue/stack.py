@@ -2,70 +2,48 @@ from stack_and_queue.node import Node
 
 
 class Stack:
+    """this class make a stack ,add to it ,remove from it ,get the top value,get the size and check if its empty """
     def __init__(self):
         self.top = None
         self.size = 0
 
-
-    def __str__(self):
-        if self.top:
-            stack_str = "Top -->"
-            node = self.top
-            while node:
-              stack_str += f" {node.value} -->"
-              node = node.next
-            return stack_str    
-        else:
-            raise Exception("Empty Queue")
-
-
-    
-    def push_stack(self,value):
-        """
-        Adds a node to the top of the stack in O(1) time complexity
-   
-        """
+    def push(self,value):
         node = Node(value)
         if self.top:
             node.next = self.top
-            self.top = node
-        else:
-            self.top = node 
-        self.size += 1      
+        self.top = node
+        self.size += 1
 
-   
-    def pop_stack(self):
-        """
-        Removes the node at the top of the stack with time complexity of O(1)
-    
-        """   
-        if self.top:
+    def pop(self):
+        if self.top is not None:
             temp = self.top
             self.top = self.top.next
-            temp.next = None
             self.size -= 1
             return temp.value
         else:
-            raise Exception("Error : empty stack")
+            raise ValueError("Error : Empty Stack!")
 
-     
-    def peek_stack(self):
-        """
-        Gives the value of the node at the top of the stack
-    
-        """   
+    def peek(self):
         if self.top:
             return self.top.value
         else:
-            raise Exception("Error : empty stack")
+            raise ValueError("Error : Empty Stack!")
         
     def get_size(self):
         return self.size
 
-  
-    def is_empty_stack(self):
-        """
-        checks if the stack is empty or not
-        
-        """ 
-        return True if self.size == 0 else False
+    def is_empty(self):
+        return self.size == 0
+    
+    def __str__(self):
+        output = ""
+        if self.top is None:
+            output = "Empty Stack!"
+        else:
+            current = self.top
+            while(current):
+                output += f'{current.value} --> '
+                current = current.next
+            
+            output += " None"
+        return output  
