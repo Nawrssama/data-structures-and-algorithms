@@ -39,6 +39,7 @@
 > - Time ==> Time ==> O(n) because the function traverses the entire list once.
 > - space ==> space ==> O(1)because the function only uses a fixed number of pointers to reverse the list and does not create any additional data structures proportional to the size of the input.
 
+linked-list-insertions
 # Whiteboard Process links
 ## insert
 ![add to the first ](./screenshots/insert.png)
@@ -304,5 +305,6 @@ def reverse_list(head):
         prev = current
         current = next_node
     return prev
+
 
 
