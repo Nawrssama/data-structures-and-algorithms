@@ -6,15 +6,15 @@ def test_PS_1 (AA):
 
 def test__PS_2():
     PQ = Pseudo_queue()
-    assert PQ.dequeue() == "The Queue is empty"
+    assert PQ.dequeue() == "Pseude Queue is Empty!"
 
 def test_PS_3(AA):
     
-    assert str(AA.inbox) == "Top --> C --> B --> A -->"
+    assert str(AA.inbox) == "C --> B --> A -->  None"
 
 def test_PS_4(AA):
     AA.dequeue()
-    assert str(AA.outbox) ==  "Top --> B --> C -->" 
+    assert str(AA.outbox) ==  "B --> C -->  None"   
 
 @pytest.fixture
 def AA():

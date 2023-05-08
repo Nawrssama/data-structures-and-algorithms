@@ -1,70 +1,53 @@
 from stack_and_queue.node import Node
 
 class Queue:
+    """this clas make a queue and can enqueue and dequeue nodes i also check if the queue is empty and can give the fisrt node in the queue"""
     def __init__(self):
         self.front = None
         self.rear = None
-        self.size = 0
 
-    def __str__(self):
-        if self.front:
-            queue_str = "Front -->"
-            node = self.front
-            while node:
-              queue_str += f" {node.value} "
-              node = node.next
-            return queue_str    
-        else:
-            raise Exception("Empty Queue")
-
-   
-    def enqueue_queue(self,value):
-        """
-        adds a new node with the given value to the back of the queue with an O(1) Time performance.
-        
-        """
+    def enqueue(self,value):
         node = Node(value)
-
-        if self.front is None:
+        #if the queue is empty
+        if not self.rear:
             self.front = node
             self.rear = node
         else:
             self.rear.next = node
             self.rear = node
-        self.size +=1    
 
-
-    def dequeue_queue(self):
-        """
-        Removes the node from the front of the queue
-  
-        """
+    def dequeue(self):
+ 
+        #if the queue is empty
         if self.front == None:
-            raise Exception("Error : This queue is empty") 
-
+            raise IndexError("Error : Empty Queue!")   
+        # if the queue contains only one node
         if self.front == self.rear:
             self.rear = None
-
+            #self.front = None
         temp = self.front
         self.front = self.front.next
         temp.next = None
-        self.size -=1
+
         return temp.value
 
-
-    def peek_queue(self):
-        """
-        Gives the value of the node at the front of the queue
+    def peek(self):
+        if self.front == None:
+            raise IndexError("Error : Empty Queue!")
+        return self.front.value
     
-        """
-        if not self.front:
-            raise Exception("Error : This queue is empty") 
-        return self.front.value    
+    def is_empty(self):
+        return self.front== None
     
-
-    def is_empty_queue(self):
-        """
-        Checks if the queue is empty or not
-    
-        """
-        return True if self.size == 0 else False
+    def __str__(self):
+        output = ""
+        if self.front is None:
+            output = "Empty Queue!"
+        else:
+            current = self.front
+            while(current):
+                output += f'{current.value} --> '
+                current = current.next
+            
+            output += " None"
+        return output  

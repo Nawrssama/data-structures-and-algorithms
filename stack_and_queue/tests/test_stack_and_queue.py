@@ -2,69 +2,98 @@ import pytest
 from stack_and_queue.stack import Stack
 from stack_and_queue.queue import Queue
 
-def test_queue1():
-    with pytest.raises(Exception):
-        queue = Queue()
-        str(queue)
-        
-
-def test_queue2():
-    queue= Queue()
-    queue.enqueue_queue("B")
-    queue.enqueue_queue("K")
-    queue.enqueue_queue("A")
-    expected = "Front --> B  K  A "
+def test_1():
+    queue = Queue()
+    expected = "Empty Queue!"
     actual = str(queue)
     assert expected == actual
-def test_queue3():
-    queue=Queue()
-    queue.enqueue_queue("B")
-    queue.enqueue_queue("K")
-    queue.enqueue_queue("A")
-    assert queue.peek_queue() == "B"
-    assert queue.dequeue_queue() == "B"
-    assert queue.peek_queue() == "K"
-def test_queue4():
-    queue=Queue()
-    with pytest.raises(Exception):
-        queue.enqueue_queue("B")
-        queue.enqueue_queue("K")
-        queue.enqueue_queue("A")
-        queue.dequeue_queue()
-        queue.dequeue_queue()
-        queue.dequeue_queue()
-        queue.peek_queue()
 
-    
-def test_stack1():
-        with pytest.raises(Exception):
-            stack = Stack()
-            str(stack)
+def test_2(queue):
+    expected="1 --> 2 --> 3 -->  None"
+    actual = str(queue)
+    assert expected == actual
+def test_3(queue):
+    queue.dequeue()
+    expected = "2 --> 3 -->  None"
+    actual = str(queue)
+    assert expected == actual
+def test_4(queue):
+    queue.dequeue()
+    queue.dequeue()
+    expected = "3 -->  None"
+    actual = str(queue)
+    assert expected == actual
+def test_5(queue):
+   expected = ("1")
+   actual = queue.peek()
+   assert expected == actual
+def test_51(queue):
+    queue.dequeue()
+    queue.dequeue()
+    queue.dequeue()
+    assert queue.is_empty() == True
 
-def test_stack2():
-    stack=Stack()
-    stack.push_stack("B")
-    stack.push_stack("K")
-    stack.push_stack("A")
-    expected = "Top --> A --> K --> B -->"
+def test_6(queue):
+   with pytest.raises(IndexError):
+        queue.dequeue()
+        queue.dequeue()
+        queue.dequeue()
+        queue.dequeue()
+        queue.peek()
+
+def test_7():
+    stack = Stack()
+    expected = "Empty Stack!"
     actual = str(stack)
     assert expected == actual
-def test_stack3():
-    stack=Stack()
-    stack.push_stack("B")
-    stack.push_stack("K")
-    stack.push_stack("A")
-    assert stack.peek_stack() == "A"
-    assert stack.pop_stack() == "A"
-    assert stack.peek_stack() == "K"
-def test_stack4():
-        with pytest.raises(Exception):
-            stack=Stack()
-            stack.push_stack("B")
-            stack.push_stack("K")
-            stack.push_stack("A")
-            stack.pop_stack()
-            stack.pop_stack()
-            stack.pop_stack()
-            stack.pop_stack()
 
+def test_8(stack):
+    expected='C --> B --> A -->  None'
+    actual = str(stack)
+    assert expected == actual
+
+def test_9(stack):
+    stack.pop()
+    expected = "B --> A -->  None"
+    actual = str(stack)
+    assert expected == actual
+def test_10(stack):
+    stack.pop()
+    stack.pop()
+    stack.pop()
+    expected = "Empty Stack!"
+    actual = str(stack)
+    assert expected == actual
+
+def test_11(stack):
+   expected = ("C")
+   actual = stack.peek()
+   assert expected == actual
+
+
+def test_12(stack):
+    with pytest.raises(ValueError):
+        stack.pop()
+        stack.pop()
+        stack.pop()
+        stack.pop()
+        stack.peek()
+
+
+@pytest.fixture
+def queue():
+    queue = Queue()
+    queue.enqueue("1")
+    queue.enqueue("2")
+    queue.enqueue("3")
+    
+    return queue
+
+@pytest.fixture
+def stack():
+    stack = Stack()
+    stack.push("A")
+    stack.push("B")
+    stack.push("C")
+    
+    return stack

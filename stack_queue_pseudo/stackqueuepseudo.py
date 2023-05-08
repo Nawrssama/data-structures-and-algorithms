@@ -14,18 +14,20 @@ class Pseudo_queue:
     
     """
     def __init__(self):
-        self.inbox = Stack()
-        self.outbox = Stack()
+       self.inbox = Stack()
+       self.outbox = Stack()
 
-    def enqueue(self, value):
-        self.inbox.push_stack(value)
+    def enqueue(self,value):
+         self.inbox.push(value)
 
     def dequeue(self):
-        if self.outbox.is_empty_stack():
-            if self.inbox.is_empty_stack():
-                return "The Queue is empty"
-            while not self.inbox.is_empty_stack():
-                self.outbox.push_stack(self.inbox.pop_stack())
-        return self.outbox.pop_stack()
-        
+         if self.inbox.is_empty() and self.outbox.is_empty():
+              return "Pseude Queue is Empty!"
+         if self.outbox.is_empty() and not self.inbox.is_empty():
+                  inbox_size = self.inbox.get_size()
+                  for x in range(inbox_size):
+                        self.outbox.push(self.inbox.pop())
+                  return self.outbox.pop()
+         if not self.outbox.is_empty():             
+               return self.outbox.pop()
 
