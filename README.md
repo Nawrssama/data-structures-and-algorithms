@@ -11,6 +11,7 @@
 |Class 10     | [stack-and-queue ](./stack_and_queue/README.md) 
 |Class 11     | [stack_queue_pseudo ](./stack_queue_pseudo/README.md) 
 |Class 12     | [stack-queue-animal-shelter ](./stack_queue_animal_shelter/README.md) 
+|Class 13     | [stack_queue_brackets ](./stack_queue_brackets/README.md) 
 
 
 
