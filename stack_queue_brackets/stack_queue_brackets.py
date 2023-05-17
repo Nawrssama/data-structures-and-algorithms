@@ -30,7 +30,8 @@ def validatebrackets(string):
     # If all brackets are well-formed, the stack should be empty
     return stack.is_empty()
 
-
+string = '({[]]})'
+print(string, '> ' ,validatebrackets(string))
 
         
     
