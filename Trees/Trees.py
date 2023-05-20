@@ -1,14 +1,38 @@
 class Node:
+    '''
+    Represents a node in a binary tree.
+    Attributes:
+    value: The value stored in the node.
+    left: Reference to the left child node.
+    right: Reference to the right child node.
+    
+    '''
     def __init__(self, value):
         self.value = value
         self.left = None
         self.right = None
 
 class Tree:
+    """
+    Represents a binary tree.
+
+    Attributes:
+    root: Reference to the root node of the tree.
+    """
     def __init__(self):
         self.root = None
 
     def pre_order(self, root, list = None):
+        """
+        Performs a pre-order traversal of the tree and returns a list of node values.
+
+        Args:
+        root: The root node of the current traversal.
+        list: A list to store the node values (optional).
+
+        Returns:
+        A list of node values in pre-order traversal.
+        """
         if list is None:
             list = []
         if root is not None:
@@ -20,6 +44,16 @@ class Tree:
         return list
 
     def in_order(self, root, list = None):
+        """
+        Performs an in-order traversal of the tree and returns a list of node values.
+
+        Args:
+        root: The root node of the current traversal.
+        list: A list to store the node values (optional).
+
+        Returns:
+        A list of node values in in-order traversal.
+        """
         if list is None:
             list = []
         if root is not None:
@@ -31,6 +65,16 @@ class Tree:
         return list
     
     def post_order(self, root, list = None):
+        """
+        Performs a post-order traversal of the tree and returns a list of node values.
+
+        Args:
+        root: The root node of the current traversal.
+        list: A list to store the node values (optional).
+
+        Returns:
+        A list of node values in post-order traversal.
+        """
         if list is None:
             list = []
         if root is not None:
@@ -42,11 +86,16 @@ class Tree:
         return list
     
 class Binary_Search_Tree(Tree): # inhertenc
+    """
+    Represents a binary search tree (BST), which is a type of binary tree.
+    """
     def __init__(self):
         super().__init__()# to pass everything that is need to be done from the parents
         
     def add(self, root, value):
-
+        '''
+        Inserts a new node with the given value into the BST.
+        '''
         if root is None: # root from bst.root will take the root of def __init__ 
             # print(root)
             self.root = Node(value)
@@ -66,6 +115,9 @@ class Binary_Search_Tree(Tree): # inhertenc
                     self.add(root.right,value)
         
     def Contains(self, root, value):
+        '''
+        Checks if a node with the given value exists in the BST.
+        '''
         if root is None:
             return False
         elif value == root.value:
