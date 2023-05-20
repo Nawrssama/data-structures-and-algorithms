@@ -1,5 +1,5 @@
 import pytest
-from stack_queue_brackets import validatebrackets
+from stack_queue_brackets.stack_queue_brackets import validatebrackets
 def test_one():
     s = "()"
     actual= validatebrackets(s)
