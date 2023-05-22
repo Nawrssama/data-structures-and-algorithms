@@ -14,6 +14,8 @@
 |Class 13     | [stack_queue_brackets ](./stack_queue_brackets/README.md) 
 |Class 14     | [Duck Duck Goose ](./Duck_Duck_Goose/README.md) 
 |Class 15     | [trees ](./Trees/README.md) 
+|Class 16     | [find maximum value ](./Trees/Max_tree.md) 
+
 
 
 
