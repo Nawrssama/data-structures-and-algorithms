@@ -31,7 +31,8 @@ def test_6(BST):
     assert BST.Contains(BST.root, 8) == True
 
 def test_7(BST):
-    assert BST.Contains(BST.root, 9) == False    
+    assert BST.Contains(BST.root, 9) == False     
+  
 
 @pytest.fixture
 def BST():

@@ -21,6 +21,7 @@ class Tree:
     """
     def __init__(self):
         self.root = None
+        self.max = 0
 
     def pre_order(self, root, list = None):
         """
@@ -85,6 +86,34 @@ class Tree:
             list.append(root.value)
         return list
     
+    def find_maximum_value(self, root):
+        '''
+        Finds the maximum value in the tree.
+
+        this function travers into the tree and compare the root value with the max_value variable and if the root is bigger the variable will take the value of the root
+
+        Args:
+        root: The root node of the current traversal.
+
+        Returns:
+        The maximum value in the tree.
+        '''
+        if root is None:
+            return 'tree is empty'
+        if root is not None:
+            if root.value > self.max:
+                self.max = root.value
+            if root.left:
+                self.max = self.find_maximum_value(root.left)
+            if root.right:
+                self.max = self.find_maximum_value(root.right)
+        return self.max
+        
+
+
+
+
+    
 class Binary_Search_Tree(Tree): # inhertenc
     """
     Represents a binary search tree (BST), which is a type of binary tree.
@@ -128,18 +157,20 @@ class Binary_Search_Tree(Tree): # inhertenc
             return self.Contains(root.right, value)
 
 
-# if __name__ == '__main__':
-#     bst = Binary_Search_Tree()
-#     bst.add(bst.root ,6)
-#     bst.add(bst.root ,3)
-#     bst.add(bst.root ,7)
-#     bst.add(bst.root ,1)
-#     bst.add(bst.root ,4)
-#     bst.add(bst.root ,9)
-#     print(bst.root.value)
-#     print(bst.pre_order(bst.root))
-#     print(bst.in_order(bst.root))
-#     print(bst.post_order(bst.root))
+if __name__ == '__main__':
+    bst = Binary_Search_Tree()
+    bst.add(bst.root ,-6)
+    bst.add(bst.root ,-3)
+    bst.add(bst.root ,-7)
+    bst.add(bst.root ,-10)
+    bst.add(bst.root ,-4)
+    bst.add(bst.root ,-9)
+    print(bst.root.value)
+    print(bst.pre_order(bst.root))
+    print(bst.in_order(bst.root))
+    print(bst.post_order(bst.root))
 
-#     print(bst.Contains(bst.root, 7))
-#     print(bst.Contains(bst.root, 10))
+    print(bst.Contains(bst.root, 7))
+    print(bst.Contains(bst.root, 10))
+
+    print(bst.find_maximum_value(bst.root))
