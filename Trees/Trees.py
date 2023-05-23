@@ -21,7 +21,7 @@ class Tree:
     """
     def __init__(self):
         self.root = None
-        self.max = 0
+        self.max = None
 
     def pre_order(self, root, list = None):
         """
@@ -100,13 +100,15 @@ class Tree:
         '''
         if root is None:
             return 'tree is empty'
+        if self.max is None:
+            self.max = root.value
         if root is not None:
             if root.value > self.max:
                 self.max = root.value
             if root.left:
-                self.max = self.find_maximum_value(root.left)
+                self.find_maximum_value(root.left)
             if root.right:
-                self.max = self.find_maximum_value(root.right)
+                self.find_maximum_value(root.right)
         return self.max
         
 
@@ -162,7 +164,7 @@ if __name__ == '__main__':
     bst.add(bst.root ,-6)
     bst.add(bst.root ,-3)
     bst.add(bst.root ,-7)
-    bst.add(bst.root ,-10)
+    bst.add(bst.root ,-1)
     bst.add(bst.root ,-4)
     bst.add(bst.root ,-9)
     print(bst.root.value)

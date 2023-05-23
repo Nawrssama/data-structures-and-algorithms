@@ -8,8 +8,8 @@ def test_2():
     empty_tree = Tree()
     assert empty_tree.find_maximum_value(empty_tree.root) == 'tree is empty' 
 
-# def test2(tree2):
-#     assert tree2.maximum_value(tree2.root) == -1
+def test2(tree2):
+    assert tree2.find_maximum_value(tree2.root) == -1
 
 
   
@@ -32,14 +32,14 @@ def tree1():
     BST.add(BST.root, 8)
     return BST
 
-# @pytest.fixture
-# def tree2():
-#     BST= Binary_Search_Tree()
-#     BST.add(BST.root, -1)
-#     BST.add(BST.root, -5)
-#     BST.add(BST.root, -4)
-#     BST.add(BST.root, -9)
-#     BST.add(BST.root, -7)
-#     BST.add(BST.root, -3)
-#     BST.add(BST.root, -6)
-#     return BST
+@pytest.fixture
+def tree2():
+    BST= Binary_Search_Tree()
+    BST.add(BST.root, -1)
+    BST.add(BST.root, -5)
+    BST.add(BST.root, -4)
+    BST.add(BST.root, -9)
+    BST.add(BST.root, -7)
+    BST.add(BST.root, -3)
+    BST.add(BST.root, -6)
+    return BST
