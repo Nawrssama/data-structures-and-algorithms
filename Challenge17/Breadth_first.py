@@ -112,13 +112,7 @@ class Tree:
                 self.find_maximum_value(root.right)
         return self.max
     
-    
-        
-
-
-
-
-    
+  
 class Binary_Search_Tree(Tree): # inhertenc
     """
     Represents a binary search tree (BST), which is a type of binary tree.
@@ -162,22 +156,49 @@ class Binary_Search_Tree(Tree): # inhertenc
             return self.Contains(root.right, value)
 
 
+def breadth_first(tree):
+    """
+    Perform breadth-first traversal on a binary tree and return a list of its values.
+
+    Args:
+        tree: The binary tree to traverse.
+
+    Returns:
+        A list of values in the binary tree in breadth-first order.
+    """
+    queue = Queue()
+    values = []
+    if tree.root is None:
+        return 'the tree is empty'
+    queue.enqueue(tree.root)
+    while not queue.is_empty():
+        node = queue.dequeue()
+        values.append(node.value)
+        if node.left:
+            queue.enqueue(node.left)
+        if node.right:
+            queue.enqueue(node.right)
+    return values
+
 if __name__ == '__main__':
-    bst = Binary_Search_Tree()
-    bst.add(bst.root ,6)
-    bst.add(bst.root ,3)
-    bst.add(bst.root ,7)
-    bst.add(bst.root ,1)
-    bst.add(bst.root ,4)
-    bst.add(bst.root ,9)
-    print(bst.root.value)
-    print(bst.pre_order(bst.root))
-    print(bst.in_order(bst.root))
-    print(bst.post_order(bst.root))
+    tree1 = Tree()
 
-    print(bst.Contains(bst.root, 7))
-    print(bst.Contains(bst.root, 10))
+    node1 = Node(5)
+    tree1.root = node1
 
-    print(bst.find_maximum_value(bst.root))
+    node2 = Node(4)
+    tree1.root.left = node2
 
-    print(bst.breadth_first(bst.root))
+    node3 = Node(9)
+    tree1.root.right = node3
+
+    node4 = Node(12)
+    tree1.root.left.left = node4
+
+    node5 = Node(6)
+    tree1.root.left.right = node5
+
+    node6 = Node(15)
+    tree1.root.right.left = node6
+    # print(tree1.find_maximum_value())
+    print(breadth_first(tree1))
