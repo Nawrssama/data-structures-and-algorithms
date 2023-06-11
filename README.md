@@ -16,6 +16,7 @@
 |Class 15     | [trees ](./Trees/README.md) 
 |Class 16     | [find maximum value ](./Trees/Max_tree.md) 
 |class 17     | [Breadth-first ](./Challenge17/README.md) 
+|class 26     | [Insertion Sort ](./Insertion_Sort/README.md) 
 
 
 
