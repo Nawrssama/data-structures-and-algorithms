@@ -1,4 +1,4 @@
-# Marge Sort
+# Merge Sort
 
 > create a method that sorts a function based on the input array
 
@@ -10,8 +10,8 @@
 
 # white-board
 
-## Marge Sort
-![Marge Sort ](./Marge%20Sort.jpg)
+## Merge Sort
+![Merge Sort ](./Merge%20Sort.jpg)
 
 
 # Solution 
