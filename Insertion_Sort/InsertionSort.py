@@ -10,6 +10,8 @@ def insert(sorted , int):
         None
     """
     i = 0
+    if sorted is []:
+        sorted.append(int)
     while i < len(sorted) and int > sorted[i]:
         i += 1
     while i < len(sorted):
@@ -30,9 +32,10 @@ def insert_sort (input):
         list: A new list containing the sorted integers.
     """
     sorted = []
-    sorted.append(input[0])
-    for i in range(1 , len(input)):
+    # sorted.append(input[0])
+    for i in range(0 , len(input)):
         insert(sorted , input[i])
     return sorted
 
 print(insert_sort([20,18,12,8,5,-2]))
+# [12 , 18 , 20]  >>> 12
