@@ -18,6 +18,9 @@
 |class 17     | [Breadth-first ](./Challenge17/README.md) 
 |class 26     | [Insertion Sort ](./Insertion_Sort/README.md) 
 |class 27     | [Merge Sort ](./Merge_Sort/README.md) 
+|class 28     | [Sorting Objects ](./Sorting_Objects/README.md) 
+
+
 
 
 
