@@ -27,6 +27,39 @@ Returns: Collection of keys
 Arguments: key
 Returns: Index in the collection for that key
 
+# Approach & Efficiency
+
+> set(key, value):
+
+Time Complexity: O(n) when there are many collisions or all entries are in a single bucket, the time complexity becomes O(n), where n is the number of entries in the hashtable.
+
+Space Complexity: O(1). The additional space used by this method is constant as it only adds a new entry to the hashtable.
+
+> get(key):
+
+Time Complexity: O(n) when there are many collisions or all entries are in a single bucket, the time complexity becomes O(n), where n is the number of entries in the hashtable.
+
+Space Complexity: O(1). The additional space used by this method is constant as it does not allocate any additional memory.
+
+> has(key):
+
+Time Complexity: O(n) in the worst case. when there are many collisions or all entries are in a single bucket, the time complexity becomes O(n), where n is the number of entries in the hashtable.
+
+Space Complexity: O(1). The additional space used by this method is constant as it does not allocate any additional memory.
+
+> keys():
+
+Time Complexity: O(n), where n is the total number of entries in the hashtable. The method iterates over all buckets and collects the keys from the entries in each bucket, avoiding duplicates. 
+
+Space Complexity: O(n), where n is the total number of entries in the hashtable. 
+
+> hash(key):
+
+Time Complexity: O(k), where k is the length of the key. The method iterates over each character in the key to calculate the hash index, and the time complexity depends on the length of the key.
+
+Space Complexity: O(1). The additional space used by this method is constant as it does not allocate any additional memory.
+
+
 # Solution 
 
     class Hashtable:
