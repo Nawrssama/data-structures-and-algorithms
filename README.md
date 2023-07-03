@@ -20,6 +20,7 @@
 |class 27     | [Merge Sort ](./Merge_Sort/README.md) 
 |class 28     | [Sorting Objects ](./Sorting_Objects/README.md) 
 |class 30     | [hashtable ](./Hashtable/README.md) 
+|class 31     | [hashmap-repeated-word ](./repeated_word/README.md) 
 
 
 
