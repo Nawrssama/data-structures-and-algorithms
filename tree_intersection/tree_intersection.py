@@ -1,20 +1,21 @@
-from Trees.Trees import Tree
+from Hash_table.hash_table import Hashtable
+from Trees.Trees import Tree,Node
 
-def tree_intersection(tree1, tree2):
+def tree_intersection(Tree1, Tree2):
     """
-    Returns a list of intersection values between two binary trees.
+    takes two binary trees and returns the intersection values between them.
 
-    Args:
-        tree1: The first binary tree.
-        tree2: The second binary tree.
+    arguments: 
+        two binary trees
 
-    Returns:
-        A list of intersection values found in both trees.
+    returns: 
+        list of intersection values
     """
-    obj = {}
+    obj = Hashtable()
     data = Tree()
-    first_tree = data.in_order(tree1)
+    first_tree = data.in_order(Tree1)
+    # print(first_tree)
     for x in first_tree:
-        obj[x] = x
-    second_tree = data.in_order(tree2)
-    return [x for x in second_tree if x in obj]
+        obj.set(x ,x)
+    second_tree = data.in_order(Tree2)
+    return [x for x in second_tree if obj.has(x)]
