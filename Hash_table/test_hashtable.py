@@ -1,5 +1,5 @@
 import pytest
-from Hashtable.hashtable import Hashtable
+from Hash_table.hash_table import Hashtable
 
 def test_set_get():
     ht = Hashtable()
