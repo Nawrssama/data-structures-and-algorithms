@@ -4,7 +4,7 @@
 
 # Approach & Efficiency
 
-> Time ==> O(n^2)
+> Time ==> O(n)
 
 > space ==> O(n)
 
