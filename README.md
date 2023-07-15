@@ -23,6 +23,8 @@
 |class 31     | [hashmap-repeated-word ](./repeated_word/README.md) 
 |class 32     | [tree_intersection ](./tree_intersection/README.md) 
 |class 33     | [hashmap-left-join ](./hashmap_left_join/README.md) 
+|class 34     | [unique_charactor ](./unique_charactor/README.md) 
+|class 35     | [graph ](./Graph/README.md) 
 
 
 
