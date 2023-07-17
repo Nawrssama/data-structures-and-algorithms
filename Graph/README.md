@@ -59,6 +59,23 @@ Returns the total number of vertices in the graph
 0 if there are none
 ```
 
+>breadth first
+
+
+```Write the following method for the Graph class:
+
+breadth first
+Arguments: Node
+Return: A collection of nodes in the order they were visited.
+Display the collection
+```
+
+# whiteboard
+
+> breadth first graph
+
+![breadth first graph](./breadth%20first%20graph.jpg)
+
 # Approach & Efficiency
 
 
@@ -87,43 +104,30 @@ Space Complexity: O(n)
 Time Complexity: O(1)
 Space Complexity: O(1)
 
+>breadth first
+
+Time Complexity: O(n)
+Space Complexity: O(n)
+
 
 # Solution
 
     ```
+    from collections import deque
+
     class Graph:
         def __init__(self):
-            """
-            Initializes an empty graph with an empty dictionary to store vertices and their edges.
-            """
+            
             self.vertices = {}
         
         def add_vertex(self, value):
-            """
-            Adds a vertex to the graph with the given value.
-
-            Args:
-                value: The value of the vertex to be added.
-
-            Returns:
-                The added vertex.
-            """
+           
             vertex = Vertex(value)
             self.vertices[vertex] = []
             return vertex
         
         def add_edge(self, vertex1, vertex2, weight=None):
-            """
-            Adds a new edge between two vertices in the graph.
-
-            Args:
-                vertex1: The first vertex to be connected by the edge.
-                vertex2: The second vertex to be connected by the edge.
-                weight: The weight of the edge (default is None).
-
-            Raises:
-                KeyError: If either vertex1 or vertex2 is not present in the graph.
-            """
+            
             if vertex1 in self.vertices and vertex2 in self.vertices:
                 edge = Edge(vertex1, vertex2, weight)
                 self.vertices[vertex1].append(edge)
@@ -132,34 +136,39 @@ Space Complexity: O(1)
                 raise KeyError("Both vertices should already be in the graph.")
         
         def get_vertices(self):
-            """
-            Returns all of the vertices in the graph.
-
-            Returns:
-                A collection (list) of all vertices in the graph.
-            """
+            
             return list(self.vertices.keys())
         
         def get_neighbors(self, vertex):
-            """
-            Returns a collection of edges connected to the given vertex.
-
-            Args:
-                vertex: The vertex to get the neighbors of.
-
-            Returns:
-                A collection (list) of edges connected to the given vertex.
-            """
+            
             if vertex in self.vertices:
                 return self.vertices[vertex]
             else:
                 return []
         
         def size(self):
-            """
-            Returns the total number of vertices in the graph.
-            """
+            
             return len(self.vertices)
+        
+        def breadth_first(self, start_vertex):
+            
+            visited = set()
+            queue = deque([start_vertex])
+            result = []
+
+            while queue:
+                current_vertex = queue.popleft()
+                if current_vertex not in visited:
+                    visited.add(current_vertex)
+                    result.append(current_vertex)
+
+                    neighbors = self.get_neighbors(current_vertex)
+                    for edge in neighbors:
+                        neighbor_vertex = edge.vertex1 if edge.vertex1 != current_vertex else edge.vertex2
+                        if neighbor_vertex not in visited:
+                            queue.append(neighbor_vertex)
+
+            return result
 
 
     class Vertex:
@@ -168,7 +177,6 @@ Space Complexity: O(1)
         
         def __repr__(self):
             return str(self.value)
-        
         
 
     class Edge:
