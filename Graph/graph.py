@@ -1,3 +1,5 @@
+from collections import deque
+
 class Graph:
     def __init__(self):
         """
@@ -67,6 +69,34 @@ class Graph:
         Returns the total number of vertices in the graph.
         """
         return len(self.vertices)
+    
+    def breadth_first(self, start_vertex):
+        """
+        Performs a breadth-first search starting from the given start_vertex.
+
+        Args:
+            start_vertex: The vertex to start the breadth-first search from.
+
+        Returns:
+            A collection (list) of vertices in the order they were visited.
+        """
+        visited = set()
+        queue = deque([start_vertex])
+        result = []
+
+        while queue:
+            current_vertex = queue.popleft()
+            if current_vertex not in visited:
+                visited.add(current_vertex)
+                result.append(current_vertex)
+
+                neighbors = self.get_neighbors(current_vertex)
+                for edge in neighbors:
+                    neighbor_vertex = edge.vertex1 if edge.vertex1 != current_vertex else edge.vertex2
+                    if neighbor_vertex not in visited:
+                        queue.append(neighbor_vertex)
+
+        return result
 
 
 class Vertex:
@@ -75,7 +105,6 @@ class Vertex:
     
     def __repr__(self):
         return str(self.value)
-    
     
 
 class Edge:
@@ -91,26 +120,30 @@ class Edge:
             return f"{self.vertex1} -- {self.vertex2}"
 
 
-# # Create a new graph
-# graph = Graph()
+# Create a new graph
+graph = Graph()
 
-# # Add vertices
-# vertex1 = graph.add_vertex(1)
-# vertex2 = graph.add_vertex(2)
-# vertex3 = graph.add_vertex(3)
+# Add vertices
+vertex1 = graph.add_vertex(1)
+vertex2 = graph.add_vertex(2)
+vertex3 = graph.add_vertex(3)
 
-# # Add edges
-# graph.add_edge(vertex1, vertex2, 10)
-# graph.add_edge(vertex2, vertex3, 5)
+# Add edges
+graph.add_edge(vertex1, vertex2, 10)
+graph.add_edge(vertex2, vertex3, 5)
 
-# # Get all vertices
-# vertices = graph.get_vertices()
-# print("Vertices:", vertices)
+# Get all vertices
+vertices = graph.get_vertices()
+print("Vertices:", vertices)
 
-# # Get neighbors of a vertex
-# neighbors = graph.get_neighbors(vertex2)
-# print("Neighbors of vertex2:", neighbors)
+# Get neighbors of a vertex
+neighbors = graph.get_neighbors(vertex2)
+print("Neighbors of vertex2:", neighbors)
 
-# # Get the size of the graph
-# graph_size = graph.size()
-# print("Graph size:", graph_size)
+# Get the size of the graph
+graph_size = graph.size()
+print("Graph size:", graph_size)
+
+# Perform breadth-first search from vertex1
+bfs_result = graph.breadth_first(vertex1)
+print("BFS Result:", bfs_result)
