@@ -139,7 +139,29 @@ class Graph:
 
         return total_cost
     
-    
+    def depth_first(self, start_vertex):
+        """
+        Performs a depth-first search starting from the given start_vertex.
+
+        Args:
+            start_vertex: The vertex to start the depth-first search from.
+
+        Returns:
+            A collection (list) of vertices in their pre-order depth-first traversal order.
+        """
+        def dfs_recursive(current_vertex, visited, result):
+            visited.add(current_vertex)
+            result.append(current_vertex.value)
+
+            for neighbor_edge in self.vertices[current_vertex.value]:
+                neighbor_vertex = neighbor_edge.vertex
+                if neighbor_vertex not in visited:
+                    dfs_recursive(neighbor_vertex, visited, result)
+
+        visited = set()
+        result = []
+        dfs_recursive(start_vertex, visited, result)
+        return result
     
 class Vertex:
     def __init__(self, value):
@@ -207,3 +229,7 @@ print("Business Trip Cost:", total_cost)
 cities = [2, 3, 1]
 total_cost = graph.business_trip(cities)
 print("Business Trip Cost:", total_cost)
+
+# Perform depth-first search starting from vertexe1
+dfs_result = graph.depth_first(vertexe1)
+print("DFS Result:", dfs_result)
