@@ -6,6 +6,7 @@ class Graph:
         Initializes an empty graph with an empty dictionary to store vertices and their edges.
         """
         self.vertices = {}
+        self.size = 0
     
     def add_vertex(self, value):
         """
@@ -18,10 +19,11 @@ class Graph:
             The added vertex.
         """
         vertex = Vertex(value)
-        self.vertices[vertex] = []
+        self.vertices[vertex.value] = []
+        self.size += 1
         return vertex
     
-    def add_edge(self, vertex1, vertex2, weight=None):
+    def add_edge(self, vertex1, vertex2, weight=0):
         """
         Adds a new edge between two vertices in the graph.
 
@@ -33,21 +35,23 @@ class Graph:
         Raises:
             KeyError: If either vertex1 or vertex2 is not present in the graph.
         """
-        if vertex1 in self.vertices and vertex2 in self.vertices:
-            edge = Edge(vertex1, vertex2, weight)
-            self.vertices[vertex1].append(edge)
-            self.vertices[vertex2].append(edge)
-        else:
-            raise KeyError("Both vertices should already be in the graph.")
+        if not vertex1.value in self.vertices.keys():
+            return "vertex does not exist"
+        
+        if vertex2 is None or not vertex2.value in self.vertices.keys():
+            return "vertex does not exist"
+        
+        edge1 = Edge(vertex2, weight)
+        self.vertices[vertex1.value].append(edge1)
+        edge2 = Edge(vertex1, weight)
+        self.vertices[vertex2.value].append(edge2)
     
     def get_vertices(self):
-        """
-        Returns all of the vertices in the graph.
-
-        Returns:
-            A collection (list) of all vertices in the graph.
-        """
-        return list(self.vertices.keys())
+         """this function is called with no arguments and returns a list of vertices"""
+         vertices = []
+         for i in self.vertices.keys():
+             vertices.append(i)
+         return vertices
     
     def get_neighbors(self, vertex):
         """
@@ -59,16 +63,24 @@ class Graph:
         Returns:
             A collection (list) of edges connected to the given vertex.
         """
-        if vertex in self.vertices:
-            return self.vertices[vertex]
-        else:
-            return []
+        vertex_value = vertex.value
+        return self.vertices[vertex_value]
     
-    def size(self):
+    def get_size(self):
         """
         Returns the total number of vertices in the graph.
         """
         return len(self.vertices)
+    
+    def __str__(self):
+        output = ''
+        for vertex in self.adj_list.keys():
+            output += f'{vertex} -> '
+            for edge in self.adj_list[vertex]:
+                
+                output += f'{edge.value} -----> '
+            output += '\n'
+        return output
     
     def breadth_first(self, start_vertex):
         """
@@ -88,62 +100,83 @@ class Graph:
             current_vertex = queue.popleft()
             if current_vertex not in visited:
                 visited.add(current_vertex)
-                result.append(current_vertex)
+                result.append(current_vertex.value)  # Append the value of the vertex to the result list
 
                 neighbors = self.get_neighbors(current_vertex)
                 for edge in neighbors:
-                    neighbor_vertex = edge.vertex1 if edge.vertex1 != current_vertex else edge.vertex2
+                    neighbor_vertex = edge.vertex
                     if neighbor_vertex not in visited:
                         queue.append(neighbor_vertex)
 
         return result
 
-
+    
+    
+    
+    
 class Vertex:
     def __init__(self, value):
         self.value = value
-    
+        self.weight = None
+        self.next = []
+
     def __repr__(self):
         return str(self.value)
-    
 
 class Edge:
-    def __init__(self, vertex1, vertex2, weight=None):
-        self.vertex1 = vertex1
-        self.vertex2 = vertex2
+    def __init__(self, vertex, weight=0):
+        self.value = vertex.value
+        self.vertex = vertex
         self.weight = weight
-    
+
     def __repr__(self):
         if self.weight is not None:
-            return f"{self.vertex1} --({self.weight})-- {self.vertex2}"
+            return f"{self.vertex} --({self.weight})-- {self.value}"
         else:
-            return f"{self.vertex1} -- {self.vertex2}"
+            return f"{self.vertex} -- {self.value}"
 
 
 # Create a new graph
 graph = Graph()
 
 # Add vertices
-vertex1 = graph.add_vertex(1)
-vertex2 = graph.add_vertex(2)
-vertex3 = graph.add_vertex(3)
+vertexe1 = graph.add_vertex(1)
+vertexe2 = graph.add_vertex(2)
+vertexe3 = graph.add_vertex(3)
 
 # Add edges
-graph.add_edge(vertex1, vertex2, 10)
-graph.add_edge(vertex2, vertex3, 5)
+graph.add_edge(vertexe1, vertexe2, 10)
+graph.add_edge(vertexe2, vertexe3, 5)
 
 # Get all vertices
 vertices = graph.get_vertices()
 print("Vertices:", vertices)
 
 # Get neighbors of a vertex
-neighbors = graph.get_neighbors(vertex2)
-print("Neighbors of vertex2:", neighbors)
+neighbors = graph.get_neighbors(vertexe2)
+print("Neighbors of vertexe2:", neighbors)
 
 # Get the size of the graph
-graph_size = graph.size()
+graph_size = graph.get_size()
 print("Graph size:", graph_size)
 
-# Perform breadth-first search from vertex1
-bfs_result = graph.breadth_first(vertex1)
+# Perform breadth-first search from vertexe1
+bfs_result = graph.breadth_first(vertexe1)
 print("BFS Result:", bfs_result)
+
+# # Calculate business trip cost
+# cities = [1, 2, 3]
+# total_cost = graph.business_trip(cities)
+# print("Business Trip Cost:", total_cost)
+
+# cities = [1, 3]
+# total_cost = graph.business_trip(cities)
+# print("Business Trip Cost:", total_cost)
+
+# cities = [1, 2, 1]
+# total_cost = graph.business_trip(cities)
+# print("Business Trip Cost:", total_cost)
+
+# cities = [2, 3, 1]
+# total_cost = graph.business_trip(cities)
+# print("Business Trip Cost:", total_cost)
