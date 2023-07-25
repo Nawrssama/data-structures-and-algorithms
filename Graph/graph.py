@@ -110,7 +110,34 @@ class Graph:
 
         return result
 
-    
+    def business_trip(self, cities):
+        """
+        Calculate the cost of a business trip with direct flights between cities.
+
+        Args:
+            cities: A list of city vertices representing the business trip path.
+
+        Returns:
+            The total cost of the business trip.
+        """
+        total_cost = 0
+
+        for i in range(len(cities) - 1):
+            current_city = cities[i]
+            next_city = cities[i + 1]
+
+            neighbors = self.vertices[current_city]
+            found_direct_flight = False
+            for edge in neighbors:
+                if edge.vertex.value == next_city:
+                    total_cost += edge.weight
+                    found_direct_flight = True
+                    break
+
+            if not found_direct_flight:
+                return None
+
+        return total_cost
     
     
     
@@ -164,19 +191,19 @@ print("Graph size:", graph_size)
 bfs_result = graph.breadth_first(vertexe1)
 print("BFS Result:", bfs_result)
 
-# # Calculate business trip cost
-# cities = [1, 2, 3]
-# total_cost = graph.business_trip(cities)
-# print("Business Trip Cost:", total_cost)
+# Calculate business trip cost
+cities = [1, 2, 3]
+total_cost = graph.business_trip(cities)
+print("Business Trip Cost:", total_cost)
 
-# cities = [1, 3]
-# total_cost = graph.business_trip(cities)
-# print("Business Trip Cost:", total_cost)
+cities = [1, 3]
+total_cost = graph.business_trip(cities)
+print("Business Trip Cost:", total_cost)
 
-# cities = [1, 2, 1]
-# total_cost = graph.business_trip(cities)
-# print("Business Trip Cost:", total_cost)
+cities = [1, 2, 1]
+total_cost = graph.business_trip(cities)
+print("Business Trip Cost:", total_cost)
 
-# cities = [2, 3, 1]
-# total_cost = graph.business_trip(cities)
-# print("Business Trip Cost:", total_cost)
+cities = [2, 3, 1]
+total_cost = graph.business_trip(cities)
+print("Business Trip Cost:", total_cost)
