@@ -24,8 +24,8 @@
 |class 32     | [tree_intersection ](./tree_intersection/README.md) 
 |class 33     | [hashmap-left-join ](./hashmap_left_join/README.md) 
 |class 34     | [unique_charactor ](./unique_charactor/README.md) 
-|class 35 & 36| [graph & graph breadth first](./Graph/README.md) 
-|class 37     | [business trip ](./Business_trip/README.md) 
+|class 35 & 36 & 37 & 38 | [graph & graph breadth first & business trip & depth first](./Graph/README.md) 
+
 
 
 

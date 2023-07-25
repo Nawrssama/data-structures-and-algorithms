@@ -89,6 +89,10 @@ Determine whether the trip is possible with direct flights, and how much it woul
 
 ![business trip  graph](./business%20trip.jpg)
 
+> depth first
+
+![depth first graph](./depth%20first.jpg)
+
 # Approach & Efficiency
 
 
@@ -126,6 +130,11 @@ Space Complexity: O(n)
 
 Time Complexity: O(n*m)
 Space Complexity: O(1)
+
+>depth first
+
+Time Complexity: O(n+m)
+Space Complexity: O(n)
 
 
 # Solution
@@ -225,6 +234,20 @@ Space Complexity: O(1)
                     return None
 
             return total_cost
+        
+        def dfs_recursive(current_vertex, visited, result):
+            visited.add(current_vertex)
+            result.append(current_vertex.value)
+
+            for neighbor_edge in self.vertices[current_vertex.value]:
+                neighbor_vertex = neighbor_edge.vertex
+                if neighbor_vertex not in visited:
+                    dfs_recursive(neighbor_vertex, visited, result)
+
+            visited = set()
+            result = []
+            dfs_recursive(start_vertex, visited, result)
+            return result
         
         
         

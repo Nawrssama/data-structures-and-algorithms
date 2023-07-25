@@ -177,3 +177,30 @@ def test_business_trip_with_invalid_flight():
     cities = [1, 2, 4]
     total_cost = graph.business_trip(cities)
     assert total_cost is None
+
+def test_depth_first_empty_graph():
+    graph = Graph()
+    start_vertex = graph.add_vertex(1)
+    result = graph.depth_first(start_vertex)
+    assert result == [1]
+
+def test_depth_first_single_vertex_graph():
+    graph = Graph()
+    start_vertex = graph.add_vertex(1)
+    result = graph.depth_first(start_vertex)
+    assert result == [1]
+
+def test_depth_first():
+    graph = Graph()
+
+    vertex1 = graph.add_vertex(1)
+    vertex2 = graph.add_vertex(2)
+    vertex3 = graph.add_vertex(3)
+    vertex4 = graph.add_vertex(4)
+
+    graph.add_edge(vertex1, vertex2, 10)
+    graph.add_edge(vertex1, vertex3, 5)
+    graph.add_edge(vertex2, vertex4, 7)
+
+    result = graph.depth_first(vertex1)
+    assert result == [1, 2, 4, 3]
