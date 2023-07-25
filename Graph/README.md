@@ -85,7 +85,9 @@ Determine whether the trip is possible with direct flights, and how much it woul
 
 ![breadth first graph](./breadth%20first.jpg)
 
+> business trip 
 
+![business trip  graph](./business%20trip.jpg)
 
 # Approach & Efficiency
 
@@ -120,7 +122,10 @@ Space Complexity: O(1)
 Time Complexity: O(n)
 Space Complexity: O(n)
 
+>business trip 
 
+Time Complexity: O(n*m)
+Space Complexity: O(1)
 
 
 # Solution
@@ -200,7 +205,26 @@ Space Complexity: O(n)
 
             return result
 
-        
+        def business_trip(self, cities):
+           
+            total_cost = 0
+
+            for i in range(len(cities) - 1):
+                current_city = cities[i]
+                next_city = cities[i + 1]
+
+                neighbors = self.vertices[current_city]
+                found_direct_flight = False
+                for edge in neighbors:
+                    if edge.vertex.value == next_city:
+                        total_cost += edge.weight
+                        found_direct_flight = True
+                        break
+
+                if not found_direct_flight:
+                    return None
+
+            return total_cost
         
         
         
